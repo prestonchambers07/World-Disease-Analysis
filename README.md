@@ -1,2 +1,2 @@
 # World-Disease-Analysis
-WIP
+Analysis of Diseases Around the world
