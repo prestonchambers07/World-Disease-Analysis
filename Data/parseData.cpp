@@ -23,7 +23,7 @@ void writeToFile(const string& row, const string& year) {
     ofstream file(fileName, ios::app);
     
     // Write headers if the file is empty
-    if (file.tellp() == 0) {
+    if (file.good() == 0) {
         // Write headers as a single string
         string headerLine = "Country,Year,Disease Name,Disease Category,Prevalence Rate (%),Incidence Rate (%),Mortality Rate (%),Age Group,Gender,Population Affected,Healthcare Access (%),Doctors per 1000,Hospital Beds per 1000,Treatment Type,Average Treatment Cost (USD),Availability of Vaccines/Treatment,Recovery Rate (%),DALYs,Improvement in 5 Years (%),Per Capita Income (USD),Education Index,Urbanization Rate (%)";
         file << headerLine << endl;
@@ -37,7 +37,7 @@ void writeToFile(const string& row, const string& year) {
 
 int main() {
     // Open the large CSV file for reading
-    ifstream inputFile("large_data.csv"); // Replace with your actual file path
+    ifstream inputFile("Global Health Statistics.csv"); // Replace with your actual file path
 
     // Check if the file is opened successfully
     if (!inputFile.is_open()) {
@@ -48,6 +48,8 @@ int main() {
     string line;
     
     // Read the file line by line
+    getline(inputFile, line);
+    // For Header ^ 
     while (getline(inputFile, line)) {
         // Skip empty lines or lines with only whitespace
         if (line.empty()) continue;
