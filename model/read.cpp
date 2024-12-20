@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Read.h"
 
 using namespace std;
@@ -15,6 +17,7 @@ countryHealth::countryHealth(){
 
 void countryHealth::loadData(string year){
 
+    
     // Read Data and load it into that year 
     // <!> Each Column Indexed <!> 
     
@@ -40,10 +43,32 @@ void countryHealth::loadData(string year){
     // 20. Per Capita Income (USD)
     // 21. Education Index
     // 22. Urbanization Rate (%)
-
-
-
-
+    
+    string filename = "../Data/" + year + ".csv";
+    ifstream file(filename);
+    string line;
+    
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string country, year, disease;
+        vector<string> rowData;
+        
+        // Read the three keys
+        getline(ss, country, ',');  // Country
+        getline(ss, year, ',');     // Year
+        getline(ss, disease, ',');  // Disease Name
+        
+        // Read remaining values into vector
+        // These will be columns 4-22 (Disease Category through Urbanization Rate)
+        string value;
+        while (getline(ss, value, ',')) {
+            rowData.push_back(value);
+        }
+        
+        // Add to triple nested map structure
+        graph[country][year][disease] = rowData;
+    }
+    cout << "Done Reading!" << endl;
 }
 
 
@@ -60,6 +85,33 @@ void countryHealth::writeData(){
 
 
 
+
+
+
+}
+
+
+void countryHealth::printGraph() {
+
+
+    // Fix to match the data strucure update. 
+    // triple map :( 
+
+    /*
+    for (const auto& countryPair : graph) {
+        cout << "Country: " << countryPair.first << endl;
+        for (const auto& yearPair : countryPair.second) {
+            cout << "\tYear: " << yearPair.first << endl;
+            cout << "\tData: ";
+            for (const auto& value : yearPair.second) {
+                cout << value << " | ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+
+    */
 
 
 
