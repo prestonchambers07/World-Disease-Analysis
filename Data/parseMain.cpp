@@ -9,8 +9,8 @@ using namespace std;
 
 // Function to extract the second element (year) from the comma-separated string
 string getYearFromLine(const string& line) {
-    size_t firstComma = line.find(','); // Find the first comma
-    size_t secondComma = line.find(',', firstComma + 1); // Find the second comma
+    int firstComma = line.find(','); // Find the first comma
+    int secondComma = line.find(',', firstComma + 1); // Find the second comma
 
     // Extract the substring between the first and second commas (the year)
     return line.substr(firstComma + 1, secondComma - firstComma - 1);
