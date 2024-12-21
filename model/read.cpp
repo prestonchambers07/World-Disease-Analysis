@@ -92,27 +92,23 @@ void countryHealth::writeData(){
 
 
 void countryHealth::printGraph() {
-
-
-    // Fix to match the data strucure update. 
-    // triple map :( 
-
-    /*
     for (const auto& countryPair : graph) {
         cout << "Country: " << countryPair.first << endl;
+        
         for (const auto& yearPair : countryPair.second) {
             cout << "\tYear: " << yearPair.first << endl;
-            cout << "\tData: ";
-            for (const auto& value : yearPair.second) {
-                cout << value << " | ";
+            
+            for (const auto& diseasePair : yearPair.second) {
+                cout << "\t\tDisease: " << diseasePair.first << endl;
+                cout << "\t\tData: ";
+                
+                for (const auto& value : diseasePair.second) {
+                    cout << value << " | ";
+                }
+                cout << endl;
             }
             cout << endl;
         }
         cout << endl;
     }
-
-    */
-
-
-
 }
