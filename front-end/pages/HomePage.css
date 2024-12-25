@@ -2,13 +2,16 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: white; /* Adding this in case the text color matches the background */
+    color: white; 
 }
 
 #particles canvas {
@@ -18,4 +21,11 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+#prompt {
+    color:white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    
 }
