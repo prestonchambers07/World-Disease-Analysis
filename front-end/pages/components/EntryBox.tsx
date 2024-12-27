@@ -1,19 +1,36 @@
 // EntryBox.tsx
 import React, { useState } from 'react';
 import './EntryBox.css'; // Create this file with your CSS
+import { submitYear } from '../services/yearService';
+import Analysis from '../Analysis';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function EntryBox() {
     const [year, setYear] = useState('');
-
-    const handleSubmit = () => {
+    const navigate = useNavigate();
+    const handleSubmit = async () => {
+        const isValid = parseInt(year, 10);
+        if(!isValid){
+            setYear('Invalid input please try again!');
+            return;
+        }
+        const digYear: unknown = year;
+        digYear as number;
+        if(digYear as number < 2000 || digYear as number > 2024){
+            setYear('Invalid year please try again!')
+            return;
+        }
+        //const result = await submitYear(year);
         console.log('Year:', year);
         setYear('');
-        const input = document.getElementById('inputBox') as HTMLInputElement;
-        if(input){
-            input.value = '';
-            input.blur();
-        }
+        navigate('/analysis');
+
+
+
+
     };
+
     const handleKeyPress = (pressedKey: React.KeyboardEvent) => {
         if (pressedKey.key === 'Enter') {
             handleSubmit();
@@ -34,6 +51,7 @@ export default function EntryBox() {
                 onChange={(e) => setYear(e.target.value)}
                 onKeyDown={handleKeyPress}
                 id = "inputBox"
+                
             />
             <button className="button" onClick={handleSubmit}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
