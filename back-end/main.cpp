@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 
     // ./a {argument (year) passed}
     // ./a 2016 
-    cout << argv[1]; // Going to be the year 
+    cout << argv[1] << endl;; // Going to be the year 
 
     countryHealth data;
 
