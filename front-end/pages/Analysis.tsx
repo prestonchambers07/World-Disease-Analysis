@@ -5,6 +5,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 // Import your JSON data
 import data from './data.json'; // Adjust path if necessary
 import './Analysis.css';
+import { Responsive } from "@tsparticles/engine";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -35,6 +36,7 @@ export default function Analysis() {
                 borderWidth: 2,
                 fill: true,
                 
+
             },
             ],
         });
@@ -43,14 +45,16 @@ export default function Analysis() {
     if (!chartData) {
         return <div>Loading...</div>;
     }
+   // Define options type for chart configuration
 
-    return (
-            <div className="container">
-                <div className="chart-container">
 
-                <Line data={chartData} />
-
-                </div>
-            </div>
-    );
+return (
+    <div className="container">
+        <div className="chart-container">
+            <Line
+                data={chartData}    // Set the data for the chart
+            />
+        </div>
+    </div>
+);
 }
