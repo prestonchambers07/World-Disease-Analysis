@@ -1,0 +1,17 @@
+/* Chart container */
+.chart-container {
+    width: 100%;         /* Ensure the container takes up full width */
+    height: 400px;       /* Set a fixed height or make it dynamic as per your design */
+    position: relative;  /* Ensure that positioning works properly */
+}
+
+  /* Ensure the canvas fills the entire container */
+canvas {
+    width: 100% !important;  /* Make the canvas take the full width of the container */
+    height: 100% !important; /* Make the canvas take the full height of the container */
+}
+
+
+body {
+    background-color: white;
+}

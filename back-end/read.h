@@ -8,10 +8,10 @@ using namespace std;
 
 class countryHealth{
 
-
-    unordered_map<string, unordered_map<string, vector<string>>> graph;
-    // ex access: graph["france"]["parknsons"][0] = "32 dead"; index's will represent info
-    // about disease casualties and etc. 
+    // graph[country][year][disease] = string of info containing information on that specific information 
+    unordered_map<string, 
+        unordered_map<string, 
+            unordered_map<string, vector<string>>>> graph;
 
 
 
@@ -36,7 +36,7 @@ public:
 
     void writeData();
 
-
+    void printGraph();
 
 };
 
